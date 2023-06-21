@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import _PdfViewer from './components/PdfViewer'
+// import _PdfViewer from './components/PdfViewer'
 import _SheetViewer from './components/SheetViewer'
 import _DocxViewer from './components/DocxViewer'
 import { ALL_FILE_TYPES, getFileTypeFromUploadType } from './utils/utils';
@@ -25,7 +25,10 @@ function WithI18nComp(Comp) {
     }
 }
 function _AutoFormatViewer(props) {
-    const { file: outFile, fileName, timeout } = props;
+
+    console.log('props', props)
+
+    const { file: outFile, fileName, timeout, readonly, showUpdInput } = props;
     const [file, setFile] = useState();
     const [fileType, setFileType] = useState('');
     useEffect(() => {
@@ -63,13 +66,14 @@ function _AutoFormatViewer(props) {
         setFile(inputFileObj);
     }
     return <>
-        <input type='file' onChange={onFlieChange} />
+        {/* 修改可不展示文件选择框 */}
+        {!showUpdInput ? '' : <input type='file' onChange={onFlieChange} />}
         <div style={{ position: 'relative' }}>
             {
                 ALL_FILE_TYPES.includes(fileType) ? (<>
-                    {
+                    {/* {
                         fileType == 'pdf' && <PdfViewer {...props} file={file} />
-                    }
+                    } */}
                     {
                         (fileType == 'xlsx' || fileType == 'xls') && <SheetViewer {...props} file={file} _fileType={fileType} />
                     }
@@ -106,7 +110,7 @@ _AutoFormatViewer.propTypes = {
     height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     locale: PropTypes.oneOf(['zh', 'en']),
 }
-export const PdfViewer = WithI18nComp(_PdfViewer);
+// export const PdfViewer = WithI18nComp(_PdfViewer);
 export const SheetViewer = WithI18nComp(_SheetViewer);
 export const DocxViewer = WithI18nComp(_DocxViewer);
 export default WithI18nComp(_AutoFormatViewer);
