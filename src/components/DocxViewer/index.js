@@ -92,12 +92,10 @@ export default function DocxViewer(props) {
             //放大
             if (scale >= 1) return;
             let _scale = scale + 0.1;
-            //console.log(_scale);
             setScale(_scale.toFixed(1) * 1);
         } else {
             if (scale <= 0.3) return;
             let _scale = scale - 0.1;
-            //console.log(_scale);
             setScale(_scale.toFixed(1) * 1)
         }
     }

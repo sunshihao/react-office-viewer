@@ -4,11 +4,15 @@ import Viewer from "../src/index";
 const meta = {
     title: `组件库/文件预览`,
     component: Text,
+    demo: "demo1"
 };
 
 export default meta;
 
-const Template = (args) => <Viewer file="http://82.157.139.89/img/cs.docx" showUpdInput={true} />;
+const Template = (args) => {
+    console.log('argsargsargs', args)
+    return <Viewer file="http://82.157.139.89/img/cs.docx" fileName="cs.docx" zoom={true} showUpdInput={false} />
+}
 
 export const base = Template.bind({});
 
