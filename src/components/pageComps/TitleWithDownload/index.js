@@ -5,9 +5,9 @@ export default function TitleWithDownload(props) {
 
     const { fileName, handleDownload, disabled = false, backgroundColor = '#1e8e3edb', zoom, onZoom } = props;
     return (
-        <div headerTop="top" className={styles.title} style={{ backgroundColor: backgroundColor }}>
+        <div className={styles.title} style={{ backgroundColor: backgroundColor }}>
             <span>{fileName}</span>
-            {/* {
+            {
                 zoom && (
                     <div style={{ display: 'flex' }}>
                         <button className={`${styles["toolbarButton"]} ${styles["zoomOut"]}`} onClick={() => onZoom('out')}></button>
@@ -15,7 +15,7 @@ export default function TitleWithDownload(props) {
                         <button className={`${styles["toolbarButton"]} ${styles["zoomIn"]}`} onClick={() => onZoom('in')}></button>
                     </div>
                 )
-            } */}
+            }
             <button className={styles["download"]} title={t("download")} onClick={handleDownload} disabled={disabled}><img src={downloadImg} /></button>
         </div>
     )

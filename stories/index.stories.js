@@ -11,7 +11,7 @@ export default meta;
 
 const Template = (args) => {
     console.log('argsargsargs', args)
-    return <Viewer file="http://82.157.139.89/img/cs.docx" fileName="cs.docx" zoom={true} showUpdInput={false} />
+    return <Viewer file="http://82.157.139.89/img/cs.docx" fileName="cs.docx" showUpdInput={true} />
 }
 
 export const base = Template.bind({});

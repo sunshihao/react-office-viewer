@@ -14,15 +14,6 @@ module.exports = {
   ],
   webpackFinal: async (config) => {
 
-
-
-    // config.module.rules.push({
-    //   test: /\.less$/,
-    //   use: ["style-loader", "css-loader", "less-loader"],
-    //   include: path.resolve(__dirname, "../")
-    // });
-
-    // 成功了
     config.module.rules.push(
       {
         test: /\.less$/,
@@ -33,22 +24,13 @@ module.exports = {
             options: {
               modules: true,
               importLoaders: 1,
-              // localIdentName: '[name]__[local]___[hash:base64:5]'
             },
           },
           require.resolve('less-loader')
-        ]
+        ],
+        include: path.resolve(__dirname, "../")
       },
     );
-
-    // config.module.rules.push({
-    //   test: /\.(ts|tsx)$/,
-    //   loader: require.resolve("babel-loader"),
-    //   options: {
-    //     presets: [["react-app", { flow: false, typescript: true }]]
-    //   }
-    // });
-    config.resolve.extensions.push(".ts", ".tsx");
 
     return config;
   }

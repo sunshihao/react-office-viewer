@@ -4,7 +4,7 @@ import styles from "./style.less";
 import { Loading, TitleWithDownload, ErrorLine } from '../pageComps';
 import { getFileTypeFromUploadType, _getBlobUrlFromBuffer, _download } from '../../utils/utils';
 export default function DocxViewer(props) {
-    const { file, fileName: outFileName, width, height } = props;
+    const { file, fileName: outFileName, width, height = "100%" } = props;
     const [docHtmlStr, setDocHtmlStr] = useState('');
     const [fileName, setFileName] = useState('');
     const [showError, setShowError] = useState(false);

@@ -65,10 +65,10 @@ function _AutoFormatViewer(props) {
         var inputFileObj = e.target.files[0];
         setFile(inputFileObj);
     }
-    return <>
+    return <div className={styles.wbSheets_home}>
         {/* 修改可不展示文件选择框 */}
         {!showUpdInput ? '' : <input type='file' onChange={onFlieChange} />}
-        <div style={{ position: 'relative' }}>
+        <div demo='1' style={{ position: 'relative',width: '100%' }}>
             {
                 ALL_FILE_TYPES.includes(fileType) ? (<>
                     {/* {
@@ -92,7 +92,7 @@ function _AutoFormatViewer(props) {
                 </>) : null
             }
         </div>
-    </>
+    </div>
 
 
 }
