@@ -5,6 +5,8 @@ import _SheetViewer from './components/SheetViewer'
 import _DocxViewer from './components/DocxViewer'
 import _XlsxPreview from './components/XlsxPreview'
 import _DocxPreview from './components/DocxPreview'
+import _PdfPreview from './components/PdfPreview'
+
 
 import { ALL_FILE_TYPES, getFileTypeFromUploadType } from './utils/utils';
 import getFileTypeFromArrayBuffer from '@yiiran/get-file-type';
@@ -72,9 +74,9 @@ function _AutoFormatViewer(props) {
         <div demo='1' style={{ position: 'relative',width: '100%' }}>
             {
                 ALL_FILE_TYPES.includes(fileType) ? (<>
-                    {/* {
-                        fileType == 'pdf' && <PdfViewer {...props} file={file} />
-                    } */}
+                    {
+                        fileType == 'pdf' && <PdfPreview {...props} file={file} />
+                    }
                     {
                         fileType == 'xlsx' && <XlsxPreview {...props} file={file} _fileType={fileType} />
                     }
@@ -119,6 +121,7 @@ export const SheetViewer = WithI18nComp(_SheetViewer);
 export const DocxViewer = WithI18nComp(_DocxViewer);
 export const XlsxPreview = WithI18nComp(_XlsxPreview);
 export const DocxPreview = WithI18nComp(_DocxPreview);
+export const PdfPreview = WithI18nComp(_PdfPreview)
 export default WithI18nComp(_AutoFormatViewer);
 
 
