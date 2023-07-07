@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react';
 // import _PdfViewer from './components/PdfViewer'
 import _SheetViewer from './components/SheetViewer'
 import _DocxViewer from './components/DocxViewer'
+import _XlsxPreview from './components/XlsxPreview'
+import _DocxPreview from './components/DocxPreview'
+
 import { ALL_FILE_TYPES, getFileTypeFromUploadType } from './utils/utils';
 import getFileTypeFromArrayBuffer from '@yiiran/get-file-type';
 import { useTranslation } from 'react-i18next'
@@ -25,8 +28,6 @@ function WithI18nComp(Comp) {
     }
 }
 function _AutoFormatViewer(props) {
-
-    console.log('props', props)
 
     const { file: outFile, fileName, timeout, readonly, showUpdInput } = props;
     const [file, setFile] = useState();
@@ -75,10 +76,13 @@ function _AutoFormatViewer(props) {
                         fileType == 'pdf' && <PdfViewer {...props} file={file} />
                     } */}
                     {
-                        (fileType == 'xlsx' || fileType == 'xls') && <SheetViewer {...props} file={file} _fileType={fileType} />
+                        fileType == 'xlsx' && <XlsxPreview {...props} file={file} _fileType={fileType} />
                     }
                     {
-                        fileType == 'docx' && <DocxViewer {...props} file={file} />
+                        fileType == 'xls' && <SheetViewer {...props} file={file} _fileType={fileType} />
+                    }
+                    {
+                        fileType == 'docx' && <DocxPreview {...props} file={file} />
                     }
                     {
                         fileType == 'doc' && <p className={styles.errorLine} >{t('formatInfoDocx')}</p>
@@ -113,6 +117,8 @@ _AutoFormatViewer.propTypes = {
 // export const PdfViewer = WithI18nComp(_PdfViewer);
 export const SheetViewer = WithI18nComp(_SheetViewer);
 export const DocxViewer = WithI18nComp(_DocxViewer);
+export const XlsxPreview = WithI18nComp(_XlsxPreview);
+export const DocxPreview = WithI18nComp(_DocxPreview);
 export default WithI18nComp(_AutoFormatViewer);
 
 

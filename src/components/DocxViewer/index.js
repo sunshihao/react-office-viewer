@@ -3,6 +3,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import styles from "./style.less";
 import { Loading, TitleWithDownload, ErrorLine } from '../pageComps';
 import { getFileTypeFromUploadType, _getBlobUrlFromBuffer, _download } from '../../utils/utils';
+import docx from './docx';
+
 export default function DocxViewer(props) {
     const { file, fileName: outFileName, width, height = "100%" } = props;
     const [docHtmlStr, setDocHtmlStr] = useState('');
@@ -12,6 +14,9 @@ export default function DocxViewer(props) {
     const [scale, setScale] = useState(1);
     const [fileArrayBuffer, setFileArrayBuffer] = useState(); //ArrayBuffer类型的文件
     const [showLoading, setShowLoading] = useState(false);
+
+    const docxRef = useRef(0);
+
     useEffect(() => {
         if (outFileName) {
             setFileName(outFileName)
@@ -61,7 +66,7 @@ export default function DocxViewer(props) {
     const loadContent = async (arrayBuffer) => {
         setShowLoading(true);
         try {
-            var data = new Uint8Array(arrayBuffer);
+            var data = new Uint8Array(arrayBuffer); // 就这  
             let { value } = await mammoth.convertToHtml({ arrayBuffer: data }, {
                 includeDefaultStyleMap: true,
             });
@@ -104,6 +109,7 @@ export default function DocxViewer(props) {
         <ErrorLine errorInfo={errorInfo} showError={showError} onShowError={onShowError} />
         <TitleWithDownload backgroundColor='rgba(35,100,155,0.9)' handleDownload={handleDownload} fileName={fileName} disabled={!fileArrayBuffer} onZoom={onZoom} zoom={true} />
         <div
+            ref={docxRef}
             className={styles['document-container']}
             style={{
                 width: scale * 100 + '%',
@@ -112,7 +118,6 @@ export default function DocxViewer(props) {
             }}
             dangerouslySetInnerHTML={{ __html: docHtmlStr }}
         >
-            {/* {docHtmlStr} */}
         </div>
     </div>
 }
