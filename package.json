@@ -1,7 +1,7 @@
 {
-  "name": "react-office-viewer-xhx",
-  "version": "1.0.2",
-  "description": "Fork from react-office-viewer. A React component to preview document of 'pdf,xls,xlsx,docx', which can automatically identify file types.",
+  "name": "@hiknowledge/react-office-viewer",
+  "version": "1.0.0",
+  "description": "Fork from react-office-viewer. A React component to preview document of 'xls,xlsx,docx', which can automatically identify file types.",
   "main": "build/bundle.js",
   "scripts": {
     "build": "yarn run rollup -c",

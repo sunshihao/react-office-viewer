@@ -10,7 +10,6 @@ const meta = {
 export default meta;
 
 const Template = (args) => {
-    console.log('argsargsargs', args)
     return <Viewer file="http://82.157.139.89/img/cs.docx" fileName="cs.docx" rendered={() => { }}
         error={(e) => { console.log('error', e) }}
         options={

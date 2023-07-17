@@ -41,8 +41,8 @@ export default class DocxPreview extends Component {
     render() {
         return (
             <>
-                <div className={styles["vue-office-docx"]}>
-                    <div className={styles["vue-office-docx-main"]} ref={this.rootRef}></div>
+                <div data="1" className="preview-office-docx">
+                    <div data="2" className="preview-office-docx-main" ref={this.rootRef}></div>
                 </div>
             </>
         )
